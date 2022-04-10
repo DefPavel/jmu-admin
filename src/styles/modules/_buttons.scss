@@ -1,0 +1,47 @@
+.card-button {
+    width: 31px;
+    height: 31px;
+    float: left;
+    border-radius: 3px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    transition: 0.3s;
+
+    &_add,
+    &_edit {
+        background-color: #4385f3;
+    }
+
+    &_add {
+        background-image: url(../../assets/images/svg/add_circle.svg);
+    }
+
+    &_edit {
+        background-image: url(../../assets/images/svg/mode.svg);
+    }
+
+    &_remove {
+        background-color: #eb4338;
+        background-image: url(../../assets/images/svg/remove_circle.svg);
+    }
+
+    &_remove:hover {
+        background-color: rgba(235, 67, 56, 0.7);
+    }
+
+    &_edit:hover,
+    &_add:hover {
+        background-color: rgba(67, 133, 243, 0.7);
+    }
+}
+
+.card-button {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn {
+    font-family: 'Roboto-Regular';
+    font-size: 14px;
+}

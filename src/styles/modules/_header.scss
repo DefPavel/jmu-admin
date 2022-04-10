@@ -1,0 +1,98 @@
+@import 'variables';
+
+header {
+    background-color: $header;
+    height: 60px;
+    border-bottom: 1px solid $mainBorder;
+
+    > .col:first-child {
+        width: 250px;
+        max-width: 250px;
+        padding: 0;
+        border-right: 1px solid $mainBorder;
+
+        .col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            p {
+                margin: 0;
+                font-family: 'Roboto-Light';
+                font-size: 19px;
+                color: #586784;
+            }
+        }
+
+        .col.hide-menu-btn {
+            width: 60px;
+            max-width: 60px;
+            display: flex;
+            border-right: 1px solid $mainBorder;
+            background-image: url(../../assets/images/svg/menu_open.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: 0.3s;
+        }
+
+        .col.hide-menu-btn:hover {
+            background-image: url(../../assets/images/svg/menu_open-hover.svg);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    }
+
+    .page-title {
+        margin: 0;
+        font-size: 19px;
+        letter-spacing: 0.4px;
+        font-family: 'Roboto-Light';
+        color: #586784;
+    }
+
+    .control-header {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+
+        li {
+            background-position: center;
+            background-size: 20px;
+            background-repeat: no-repeat;
+            height: 100%;
+            width: 59px;
+            border-left: 1px solid $mainBorder;
+            transition: 0.3s;
+        }
+
+        li:hover {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        li.home {
+            background-image: url(../../assets/images/svg/home.svg);
+        }
+
+        li.home:hover {
+            background-image: url(../../assets/images/svg/home-hover.svg);
+        }
+
+        li.logout {
+            background-image: url(../../assets/images/svg/logout.svg);
+        }
+
+        li.sync {
+            background-image: url(../../assets/images/svg/sync.svg);
+        }
+
+        li.sync:hover {
+            background-image: url(../../assets/images/svg/sync-hover.svg);
+        }
+
+        li.logout:hover {
+            background-image: url(../../assets/images/svg/logout-hover.svg);
+        }
+    }
+}

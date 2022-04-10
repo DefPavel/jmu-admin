@@ -1,0 +1,179 @@
+nav {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+
+    // Все меню
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .col {
+            padding: 0;
+        }
+
+        .col {
+            display: flex;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: 0.3s;
+        }
+    }
+
+    // Все ссылки во всех меню
+    ul a {
+        color: #646464;
+        font-family: 'Roboto-Regular';
+        font-size: 15.4px;
+        transition: 0.3s;
+        letter-spacing: -0.6px;
+    }
+
+    // Все ссылки(наведение) во всех меню
+    ul a:hover {
+        text-decoration: none;
+    }
+
+    // Все пункты во всех меню
+    ul li {
+        align-items: flex-start;
+    }
+
+    // Меню первого уровня
+    >ul {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    // Пункты меню первого уровня
+    >ul>li {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        img {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 15px;
+            top: 15px;
+            transition: 0.3s;
+        }
+
+        .col:first-of-type {
+            padding: 13px 25px;
+
+            div:last-of-type {
+                margin-left: 10px;
+                display: flex;
+            }
+        }
+    }
+
+    // Пункты меню первого уровня(наведение)
+    >ul>li:hover {
+        cursor: pointer;
+    }
+
+    // Пункты меню первого уровня наведение не первый блок
+    >ul>li>.col:first-of-type:hover>div>a,
+    >ul>li.activeNav>.col:first-of-type>div>a {
+        color: #4285f4;
+        transition: 0.3s;
+    }
+
+    >ul>li.slideNav {
+        img {
+            transform: rotate(180deg);
+            transition: 0.3s;
+        }
+    }
+
+    >ul>li .col.submenu {
+        display: none;
+        background-color: #eeeeee;
+        border-top: 1px solid $mainBorder;
+        border-bottom: 1px solid $mainBorder;
+    }
+
+    >ul>li .col.submenu>ul>li {
+        display: flex;
+        padding: 10px 25px;
+
+        div:last-of-type {
+            margin-left: 10px;
+            display: flex;
+
+            a {
+                font-size: 14px;
+            }
+        }
+    }
+
+    >ul>li .col.submenu>ul>li:hover a {
+        color: #4285f4;
+    }
+
+    .icon.home {
+        background-image: url(../../assets/images/svg/home.svg);
+    }
+
+    .icon.person {
+        background-image: url(../../assets/images/svg/person.svg);
+    }
+
+    .icon.groups {
+        background-image: url(../../assets/images/svg/group-users.svg);
+    }
+
+    .icon.corporate {
+        background-image: url(../../assets/images/svg/corporate.svg);
+    }
+
+    .icon.modules {
+        background-image: url(../../assets/images/svg/modules.svg);
+    }
+
+    .icon.settings {
+        background-image: url(../../assets/images/svg/settings.svg);
+    }
+
+    >ul>li:nth-child(1)>.col:first-of-type:hover .icon.home,
+    >ul>li:nth-child(1).activeNav .icon.home {
+        background-image: url(../../assets/images/svg/home-hover.svg);
+    }
+
+    >ul>li:nth-child(2)>.col:first-of-type:hover .icon.person,
+    >ul>li:nth-child(2).activeNav .icon.person {
+        background-image: url(../../assets/images/svg/person-hover.svg);
+    }
+
+    >ul>li:nth-child(3)>.col:first-of-type:hover .icon.corporate,
+    >ul>li:nth-child(3).activeNav .icon.corporate {
+        background-image: url(../../assets/images/svg/corporate-hover.svg);
+    }
+
+    >ul>li:nth-child(4)>.col:first-of-type:hover .icon.modules,
+    >ul>li:nth-child(4).activeNav .icon.modules {
+        background-image: url(../../assets/images/svg/modules-hover.svg);
+    }
+
+    >ul>li:nth-child(5)>.col:first-of-type:hover .icon.groups,
+    >ul>li:nth-child(5).activeNav .icon.groups {
+        background-image: url(../../assets/images/svg/group-users-hover.svg);
+    }
+
+    >ul>li:nth-child(6)>.col:first-of-type:hover .icon.settings,
+    >ul>li:nth-child(6).activeNav .icon.settings {
+        background-image: url(../../assets/images/svg/settings-hover.svg);
+    }
+}
