@@ -1,6 +1,6 @@
 import React from 'react';
 import Cookies from 'universal-cookie/es6';
-const Header = () => {
+const Header = (props) => {
 
 const logOut = () => {
     const cookies = new Cookies()
@@ -18,7 +18,7 @@ const logOut = () => {
         </div>
         <div className='col d-flex px-0'>
             <div className='col d-flex align-items-center px-3'>
-                <h2 className='page-title'>Title</h2>
+                <h2 className='page-title'>{props.text}</h2>
             </div>
             <div className='col d-flex px-0 justify-content-end'>
                 <ul className='control-header'>

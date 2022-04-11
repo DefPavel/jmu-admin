@@ -1,14 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './pages/App';
-import Login from './pages/Login'
 import store from './store';
 import axios from 'axios';
 import Cookies from 'universal-cookie/es6';
 import { Provider } from 'react-redux';
 import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
+
+import Home from './pages/Home';
+import Login from './pages/Login'
+import Users from 'pages/Users';
+import Modules from 'pages/Modules';
+import Groups from 'pages/Groups';
+import Settings from 'pages/Settings';
+import Corporates from 'pages/Corporates';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
+
 
 
 const cookies = new Cookies();
@@ -53,11 +61,36 @@ ReactDOM.render(
                         <Login />
                     </LoginRoute>
             }/>
-             <Route path="/" exact element={
-                    <PrivateRoute>
-                        <App />
-                    </PrivateRoute>
-                }/>
+            <Route path="/" exact element={
+                  <PrivateRoute>
+                      <Home />
+                  </PrivateRoute>
+              }/>
+                <Route path="/users" exact element={
+                  <PrivateRoute>
+                      <Users />
+                  </PrivateRoute>
+              }/>
+                <Route path="/modules" exact element={
+                  <PrivateRoute>
+                      <Modules />
+                  </PrivateRoute>
+              }/>
+                <Route path="/groups" exact element={
+                  <PrivateRoute>
+                      <Groups />
+                  </PrivateRoute>
+              }/>
+                <Route path="/settings" exact element={
+                  <PrivateRoute>
+                      <Settings />
+                  </PrivateRoute>
+              }/>
+                <Route path="/corparates" exact element={
+                  <PrivateRoute>
+                      <Corporates />
+                  </PrivateRoute>
+              }/>
           </Routes>
         </BrowserRouter>
       </Provider>

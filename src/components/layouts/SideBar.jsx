@@ -2,21 +2,12 @@ import {React, useState} from 'react';
 import Expand from 'assets/images/svg/expand_more.svg';
 import { Link } from 'react-router-dom';
 
-const SideBar = () => {
-
-   const ItemsBar = [
-      {
-          url: '/',
-          icon: 'home',
-          text: 'Главная'
-      },]
-
+const SideBar = (props) => {
     return (
       <nav>
        <ui>
            {
-               ItemsBar.map((item , index) => (
-               
+               props.items.map((item , index) => (
                 <li className="d-flex flex-column" key={index}>
                     <Link to={item?.url}>
                         <div className='col d-flex flex-row'>
@@ -29,7 +20,6 @@ const SideBar = () => {
                ))
            }
         </ui> 
-     
     </nav>
     )
   };
