@@ -1,10 +1,12 @@
+import GroupsForm from 'components/GroupsForm'
+import BaseLayout from 'components/layouts/BaseLayout'
 import React from 'react'
 
 const Groups = () => {
   return (
-    <div>
-      
-    </div>
+    <BaseLayout>
+    <GroupsForm />
+    </BaseLayout>
   )
 }
 

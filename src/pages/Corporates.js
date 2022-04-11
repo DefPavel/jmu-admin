@@ -1,10 +1,12 @@
+import CorporatesForm from 'components/CorporatesForm'
+import BaseLayout from 'components/layouts/BaseLayout'
 import React from 'react'
 
 const Corporates = () => {
   return (
-    <div>
-      
-    </div>
+    <BaseLayout >
+    <CorporatesForm />
+   </BaseLayout>
   )
 }
 

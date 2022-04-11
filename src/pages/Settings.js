@@ -1,10 +1,12 @@
+import BaseLayout from 'components/layouts/BaseLayout'
+import SettingsForm from 'components/SettingsForm'
 import React from 'react'
 
 const Settings = () => {
   return (
-    <div>
-      
-    </div>
+    <BaseLayout>
+    <SettingsForm />
+    </BaseLayout>
   )
 }
 

@@ -8,14 +8,13 @@ const SideBar = (props) => {
        <ui>
            {
                props.items.map((item , index) => (
-                <li className="d-flex flex-column" key={index}>
-                    <Link to={item?.url}>
-                        <div className='col d-flex flex-row'>
-                            <div className='icon home'></div>
-                            <span>{item?.text}</span>
-                        </div>
-                        
-                    </Link>
+                  <li className="d-flex flex-column" key={index}>
+                  <div className="col d-flex flex-row">
+                   <div className={`icon ${item.icon}`}></div>
+                     <Link to={item?.url} >
+                     {item.text}
+                     </Link>
+                   </div>
                 </li>
                ))
            }

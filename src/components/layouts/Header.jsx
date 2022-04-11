@@ -13,7 +13,7 @@ const logOut = () => {
         <div className='col d-flex'>
             <div className='col hide-menu-btn'></div>
             <div className='col'>
-                <p>jmu Админ</p>
+                <p>JMU-Админ</p>
             </div>
         </div>
         <div className='col d-flex px-0'>

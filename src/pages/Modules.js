@@ -1,10 +1,12 @@
+import BaseLayout from 'components/layouts/BaseLayout'
+import ModulesForm from 'components/ModulesForm'
 import React from 'react'
 
 const Modules = () => {
   return (
-    <div>
-      
-    </div>
+    <BaseLayout>
+    <ModulesForm />
+    </BaseLayout>
   )
 }
 
