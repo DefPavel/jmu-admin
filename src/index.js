@@ -17,6 +17,7 @@ import Corporates from 'pages/Corporates';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
+import NotFound from 'pages/NotFound';
 
 
 
@@ -97,6 +98,7 @@ ReactDOM.render(
                       <Corporates />
                   </PrivateRoute>
               }/>
+              <Route path="*" exact element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </Provider>,

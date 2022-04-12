@@ -1,5 +1,5 @@
 import React, {useEffect } from 'react';
-import { Container, Col, Table, Button } from 'react-bootstrap';
+import { Container, Col, Table } from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 import { fetchGetUsers ,fetchDeleteUsers } from 'store/reducers/usersReducer';
 import moment from 'moment';

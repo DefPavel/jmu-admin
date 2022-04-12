@@ -1,6 +1,36 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
 
+export const fetchGetOrganizations = createAsyncThunk(
+    'users/company/get',
+    async (payload, thunkApi) => {
+        try {
+            //const currentPage = payload?.currentPage;
+            const response = await axios.get('/api/organizations/all', payload);
+            return response.data;
+        } 
+        catch (error) {
+            return thunkApi.rejectWithValue(error?.response?.data || 'Произошла непредвиденная ошибка')
+        }
+    }
+);
+export const fetchGetAuthGroups = createAsyncThunk(
+    'users/auth_groups/get',
+    async (payload, thunkApi) => {
+        try {
+            //const currentPage = payload?.currentPage;
+            const response = await axios.get('/api/auth_groups/all', {
+                params:{
+                    id_org: payload
+                }
+            });
+            return response.data;
+        } 
+        catch (error) {
+            return thunkApi.rejectWithValue(error?.response?.data || 'Произошла непредвиденная ошибка')
+        }
+    }
+);
 
 export const fetchGetUsers = createAsyncThunk(
     'users/get',
@@ -29,11 +59,11 @@ export const fetchDeleteUsers = createAsyncThunk(
     }
 );
 export const fetchNewUsers = createAsyncThunk(
-    'users/new',
+    'users/add',
     async (payload, thunkApi) => {
         try {
             //const currentPage = payload?.currentPage;
-            const response = await axios.post('/api/users/new', payload);
+            const response = await axios.post('/api/users/add', payload);
             return response.data;
         } 
         catch (error) {
@@ -48,6 +78,8 @@ const usersReducer = createSlice({
         isLoading: false,
         error: '',
         users: [],
+        authGroups:[],
+        company:[],
     },
     extraReducers: {
         // --------------GET-------------------- //
@@ -67,6 +99,22 @@ const usersReducer = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
+        // --------------INSERT-------------------- //
+        // Загрузка
+        [fetchNewUsers.pending]: (state) => {
+            state.isLoading = true;
+            state.error = '';
+        },
+        // В случае успеха
+        [fetchNewUsers.fulfilled]: (state ,action) => {
+            state.isLoading = false;
+            state.error = '';
+        },
+        // В случае ошибки
+        [fetchNewUsers.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
         // --------------DELETE-------------------- //
         // Загрузка
         [fetchDeleteUsers.pending]: (state) => {
@@ -82,7 +130,41 @@ const usersReducer = createSlice({
         [fetchDeleteUsers.rejected]: (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
-        }
+        },
+        // -----------Company---------------------
+        // Загрузка
+        [fetchGetOrganizations.pending]: (state) => {
+            state.isLoading = true;
+            state.error = '';
+        },
+        // В случае успеха
+        [fetchGetOrganizations.fulfilled]: (state ,action) => {
+            state.isLoading = false;
+            state.error = '';
+            state.company = action.payload
+        },
+        // В случае ошибки
+        [fetchGetOrganizations.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
+         // -----------AuthGroups---------------------
+        // Загрузка
+        [fetchGetAuthGroups.pending]: (state) => {
+            state.isLoading = true;
+            state.error = '';
+        },
+        // В случае успеха
+        [fetchGetAuthGroups.fulfilled]: (state ,action) => {
+            state.isLoading = false;
+            state.error = '';
+            state.authGroups = action.payload
+        },
+        // В случае ошибки
+        [fetchGetAuthGroups.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
 
     }
 });
