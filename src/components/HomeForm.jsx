@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, {useEffect } from 'react';
-import { Button, Container, Table } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import {useDispatch, useSelector} from 'react-redux';
 import { fetchGetSession , fetchDeleteSession } from 'store/reducers/sesionsReducer';

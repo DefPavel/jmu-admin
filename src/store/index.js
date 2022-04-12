@@ -6,6 +6,7 @@ import usersReducer from './reducers/usersReducer';
 
 const store = configureStore({
   reducer: {
+    locate: '',
     login: authReducer,
     session: sesionsReducer,
     user: usersReducer,

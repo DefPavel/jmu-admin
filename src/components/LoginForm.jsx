@@ -32,7 +32,6 @@ const LoginForm = () => {
 
         const pass = CryptoJS.enc.Hex.stringify(byteIv) + ':' + encryptedStringHex.toString(CryptoJS.enc.Hex);
         await dispatch(fetchAuth({password: pass, login, id_module: 1}));
-        console.log(error);
         if (cookies.get('auth-token')) navigate('/')
     }
 
