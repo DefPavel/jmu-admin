@@ -23,11 +23,17 @@ const HomeForm = () => {
 
   return (
     <Container fluid className='w-100 d-flex flex-column pt-4'>
+
+      <div className="breadcrumbs d-flex pb-3">
+            <p className="crumbs"> </p>
+            <b className='activeCrumb'>Главная</b>
+            <p>/</p>
+        </div>
        <div className='card override-card shadow-sm'>
         <div className='card-title mb-4'>
             <h3>Активные сессии</h3>
         </div>
-        <Table responsive bordered hover>
+        <Table responsive bordered striped hover>
           <thead>
             <tr>
               <th>№</th>
@@ -37,7 +43,7 @@ const HomeForm = () => {
               <th>Модуль</th>
               <th>Группа</th>
               <th>Организация</th>
-              <th>Последняя активность</th>
+              <th>Активность</th>
               <th>Статус</th>
               <th>Действия</th>
             </tr>
@@ -59,12 +65,13 @@ const HomeForm = () => {
                         : <td className="row__offline"><span>offline</span></td>
                         }
                         <td className='actionColumn'>{item.status === 'true' 
-                        ? <Button variant="danger" size="sm" 
-                        onClick={ async () => {
-                          await dispatch(fetchDeleteSession(item));
-                          await dispatch(fetchGetSession());
-                        }}>Удалить</Button> 
-                        : <Button disabled variant="danger" size="sm">Удалить</Button> }</td>
+                        ? <div className='card-button card-button_remove' 
+                          onClick={ async () => {
+                            await dispatch(fetchDeleteSession(item));
+                            await dispatch(fetchGetSession());
+                          }} />
+                        : '' }
+                       </td>
                     </tr>})
             }
           </tbody>

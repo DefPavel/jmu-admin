@@ -9,6 +9,7 @@ import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login'
 import Users from 'pages/Users';
+import NewUsers from 'pages/NewUsers';
 import Modules from 'pages/Modules';
 import Groups from 'pages/Groups';
 import Settings from 'pages/Settings';
@@ -16,6 +17,7 @@ import Corporates from 'pages/Corporates';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
+
 
 
 
@@ -52,7 +54,6 @@ axios.interceptors.response.use((response) => {
 
 
 ReactDOM.render(
-    <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
@@ -69,6 +70,11 @@ ReactDOM.render(
                 <Route path="/users" exact element={
                   <PrivateRoute>
                       <Users />
+                  </PrivateRoute>
+              }/>
+              <Route path="users/new" exact element={
+                  <PrivateRoute>
+                      <NewUsers />
                   </PrivateRoute>
               }/>
                 <Route path="/modules" exact element={
@@ -93,7 +99,6 @@ ReactDOM.render(
               }/>
           </Routes>
         </BrowserRouter>
-      </Provider>
-    </React.StrictMode>,
+      </Provider>,
     document.getElementById('root')
 );
