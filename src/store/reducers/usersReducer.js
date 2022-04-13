@@ -5,8 +5,14 @@ export const fetchGetOrganizations = createAsyncThunk(
     'users/company/get',
     async (payload, thunkApi) => {
         try {
-            //const currentPage = payload?.currentPage;
-            const response = await axios.get('/api/organizations/all', payload);
+            const currentPage = payload?.currentPage;
+            const response = await axios.get('/api/organizations/all', 
+            {
+                params: {
+                    currentPage,
+                },
+                payload
+            });
             return response.data;
         } 
         catch (error) {
@@ -79,7 +85,7 @@ const usersReducer = createSlice({
         error: '',
         users: [],
         authGroups:[],
-        company:[],
+        company:{},
     },
     extraReducers: {
         // --------------GET-------------------- //

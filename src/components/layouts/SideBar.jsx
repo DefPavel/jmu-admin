@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React} from 'react';
 import { Link } from 'react-router-dom';
 
 const SideBar = (props) => {
@@ -11,7 +11,9 @@ const SideBar = (props) => {
                   <div className="col d-flex flex-row">
                    <div className={`icon ${item.icon}`}></div>
                     <div>
-                    <Link to={item?.url} >
+                    <Link 
+                      to={item?.url} 
+                      onClick={() =>  localStorage.setItem('location', item.text)} >
                      {item.text}
                      </Link>
                     </div>

@@ -40,7 +40,7 @@ const ItemsSideBar = [
 const BaseLayout = ({children}) => {
   return (
     <Container fluid className='d-flex mx-0 px-0 w-100 flex-column mh-100vh'>
-       <Header text={ItemsSideBar[0].text} />
+       <Header />
        <Container fluid className='main-container d-flex'>
           <Col>
               <SideBar items={ItemsSideBar} />

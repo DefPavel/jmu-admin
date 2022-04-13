@@ -1,17 +1,28 @@
-import React, {useEffect } from 'react';
-import { Container, Col, Table } from 'react-bootstrap';
+import React, {useEffect,useState } from 'react';
+import { Container, Col, Table , Form ,OverlayTrigger ,Tooltip } from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
+import ReactPaginate from 'react-paginate';
 import { fetchGetUsers ,fetchDeleteUsers } from 'store/reducers/usersReducer';
 import moment from 'moment';
 
 const UsersForm = () => {
 
   const dispatch = useDispatch();
-  const dataUsers = useSelector(state => state.user.users);
+
+  const dataUsers = useSelector(state => state.user.users.data);
+  const totalPage = useSelector(state => state.user.users.pagination?.lastPage);
+  const [search, setSearch] = useState('');
+
 
   useEffect(() => {
     dispatch(fetchGetUsers())
   }, [dispatch]);
+
+  const paginate = pageNumber => {
+		pageNumber = pageNumber.selected + 1;
+        if (pageNumber > 0 && pageNumber <= totalPage)
+			dispatch(fetchGetUsers())
+	}
 
   return (
    <Container fluid className='w-100 d-flex flex-column pt-4'>
@@ -31,12 +42,32 @@ const UsersForm = () => {
           <h3>Список пользователей</h3>
         </Col>
         <Col>
-          <div 
-            className='card-button card-button_add' 
-            onClick={() => window.location = '/users/new'} />
+        <OverlayTrigger
+             overlay={
+              <Tooltip>
+                Создать пользователя
+              </Tooltip>
+            }>
+              <div 
+                className='card-button card-button_add' 
+                onClick={() => {
+                  window.location = '/users/new';
+                  localStorage.setItem('location', 'Создание пользователя');
+                }} />
+            </OverlayTrigger>
+       
         </Col>
        </div>
-
+       <div className='d-flex justify-content-end'>
+        <Form.Group className="mb-3">
+            <Form.Label>Поиск:</Form.Label>
+            <Form.Control 
+              size='sm'
+              required 
+              value={search} 
+              onChange={(e) => setSearch(e.target.value)} />
+        </Form.Group>
+       </div>
        <Table responsive bordered striped hover>
        <thead>
             <tr>
@@ -56,8 +87,9 @@ const UsersForm = () => {
           </thead>
           <tbody>
           {
-              dataUsers?.map((item , i) => {
-                return <tr key={i}>
+              dataUsers?.filter(item => item.firstname.toLowerCase().includes(search.toLowerCase()))
+              .map((item , i) => {
+                  return <tr key={i}>
                         <td width={15}>{i + 1}</td>
                         <td>{item.login}</td>
                         <td>{item.email}</td>
@@ -79,12 +111,28 @@ const UsersForm = () => {
                               }} 
                             />
                           </div>
-                        </td>
-                    </tr>})
-            }
-
+                    </td>
+                </tr>})
+          }
           </tbody>
        </Table>
+       <ReactPaginate style={{margin:0}}
+                        previousLabel={'<'}
+                        nextLabel={'>'}
+                        breakLabel={'...'}
+                        pageCount={totalPage}
+                        onPageChange={paginate}
+                        containerClassName={'pagination pagination-sm justify-content-end'}
+                        pageClassName={'page-item'}
+                        pageLinkClassName={'page-link'}
+                        previousClassName={'page-item'}
+                        previousLinkClassName={'page-link'}
+                        nextClassName={'page-item'}
+                        nextLinkClassName={'page-link'}
+                        breakClassName={'page-item'}
+                        breakLinkClassName={'page-link'}
+                        activeClassName={'active'}
+        />
      </div>
 
    </Container>

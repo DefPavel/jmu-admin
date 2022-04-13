@@ -32,7 +32,10 @@ const LoginForm = () => {
 
         const pass = CryptoJS.enc.Hex.stringify(byteIv) + ':' + encryptedStringHex.toString(CryptoJS.enc.Hex);
         await dispatch(fetchAuth({password: pass, login, id_module: 1}));
-        if (cookies.get('auth-token')) navigate('/')
+        if (cookies.get('auth-token')) {
+            localStorage.setItem('location', 'Главная');
+            navigate('/');
+        } 
     }
 
     return (
